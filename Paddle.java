@@ -17,10 +17,14 @@ public class Paddle {
 	}
 	
 	private void checkBounds() {
+		if(this.yCoordinate < 0) {
+			this.yCoordinate = 0;
+		}
 		
 		if(this.yCoordinate + paddleHeight > windowHeight) {
 			this.yCoordinate = windowHeight - paddleHeight;
 		}
+		
 	}
 	
 	public int getXcoordinate() {
