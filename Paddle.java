@@ -12,12 +12,16 @@ public class Paddle {
 		this.paddleHeight = paddleHeight;
 	}
 	
-	private void drawPaddle() {
-		
-	}
 	
-	private void checkBounds() {
+	
+	private void checkBounds(int windowHeight) {
+		if(this.yCoordinate < 0) {
+			this.yCoordinate = 0;
+		}
 		
+		if(this.yCoordinate + paddleHeight > windowHeight) {
+			this.yCoordinate = windowHeight - paddleHeight;
+		}
 	}
 	
 	public int getXcoordinate() {
