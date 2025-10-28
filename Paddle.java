@@ -15,9 +15,12 @@ public class Paddle {
 	private void drawPaddle() {
 		
 	}
-	// Ensures that the paddle does not go out of bounds
+	
 	private void checkBounds() {
 		
+		if(this.yCoordinate + paddleHeight > windowHeight) {
+			this.yCoordinate = windowHeight - paddleHeight;
+		}
 	}
 	
 	public int getXcoordinate() {
