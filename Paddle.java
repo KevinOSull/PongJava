@@ -15,7 +15,7 @@ public class Paddle {
 	private void drawPaddle() {
 		
 	}
-	
+	// Ensures that the paddle does not go out of bounds
 	private void checkBounds() {
 		
 	}
@@ -35,6 +35,8 @@ public class Paddle {
 	public int getPaddleHeight() {
 		return this.paddleHeight;
 	}
+
+
 	
 	
 
