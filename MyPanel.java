@@ -7,12 +7,14 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-public class MyPanel extends JPanel{
+public class MyPanel extends JPanel implements Runnable{
 	
 	public Game myGame;
 	public Ball myBall;
 	public Paddle myPaddle;
 	public Paddle myAiPaddle;
+
+	private Thread gameThread;
 	
 	private static final int WINDOW_WIDTH = 1300;
 	private static final int WINDOW_HEIGHT = 1300;
@@ -27,6 +29,20 @@ public class MyPanel extends JPanel{
 		myPaddle = p;
 		myAiPaddle = ai;
 		posX = WINDOW_WIDTH - myAiPaddle.getPaddleWidth();
+	}
+
+	public void startGame() {
+		gameThread = new Thread(this);
+		gameThread.start();
+	}
+	
+	@Override
+	public void run() {
+		while(gameThread != null) {
+			myBall.updateBallPosition(WINDOW_HEIGHT);
+			myGame.updateGameLoop();
+			repaint();
+		}
 	}
 	
 	public void paint(Graphics g) {

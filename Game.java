@@ -10,6 +10,7 @@ public class Game {
 	private int centerY = (1300/2)-(150/2);
 	
 	private static final int MAX_SCORE = 3;
+	private boolean isGameStarted = false;
 	
 
 	public Game() {
@@ -19,9 +20,7 @@ public class Game {
 		
 	}
 	
-	private void startGame() {
-		
-	}
+	
 	
 	private void updateGameLoop() {
 		
