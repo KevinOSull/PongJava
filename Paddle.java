@@ -4,19 +4,19 @@ public class Paddle {
 	private int yCoordinate;
 	private int paddleWidth;
 	private int paddleHeight;
-	
+
 	public Paddle(int xCoordinate,int yCoordinate,int paddleWidth,int paddleHeight) {
 		this.xCoordinate = xCoordinate;
 		this.yCoordinate = yCoordinate;
 		this.paddleWidth = paddleWidth;
 		this.paddleHeight = paddleHeight;
 	}
-	
+
 	private void drawPaddle() {
 		
 	}
 	
-	private void checkBounds() {
+	private void checkBounds(int windowHeight) {
 		if(this.yCoordinate < 0) {
 			this.yCoordinate = 0;
 		}
@@ -25,8 +25,16 @@ public class Paddle {
 			this.yCoordinate = windowHeight - paddleHeight;
 		}
 		
-	}
+}
 	
+	public void movePaddleDown(){
+		yCoordinate += 60;
+	}
+
+	public void movePaddleUp(){
+		yCoordinate -= 60;
+	}
+
 	public int getXcoordinate() {
 		return this.xCoordinate;
 	}

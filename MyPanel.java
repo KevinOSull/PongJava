@@ -6,8 +6,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
-
-public class MyPanel extends JPanel implements Runnable{
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+public class MyPanel extends JPanel implements Runnable, KeyListener{
 	
 	public Game myGame;
 	public Ball myBall;
@@ -15,6 +16,9 @@ public class MyPanel extends JPanel implements Runnable{
 	public Paddle myAiPaddle;
 
 	private Thread gameThread;
+
+	public boolean upPressed;
+	public boolean downPressed;
 	
 	private static final int WINDOW_WIDTH = 1300;
 	private static final int WINDOW_HEIGHT = 1300;
@@ -40,7 +44,7 @@ public class MyPanel extends JPanel implements Runnable{
 	public void run() {
 		while(gameThread != null) {
 			myBall.updateBallPosition(WINDOW_HEIGHT);
-			myGame.updateGameLoop();
+			myGame.updateGameLoop(upPressed,downPressed);
 			repaint();
 		}
 	}
@@ -61,6 +65,42 @@ public class MyPanel extends JPanel implements Runnable{
 		
 		g2D.setColor(Color.RED);
 		g2D.fillRect(0,WINDOW_HEIGHT-8,WINDOW_WIDTH,8);
+	}
+
+	public void keyTyped(KeyEvent e) {
+		
+		
+	}
+	
+
+	public void keyPressed(KeyEvent e){
+		int key = e.getKeyCode();
+		switch(key){
+			case KeyEvent.VK_UP:
+				upPressed = true;
+				System.out.println("Key Pressed up");
+				break;
+			case KeyEvent.VK_DOWN:
+				downPressed = true;
+				System.out.println("Key Pressed down");
+				break;
+		}
+
+	}
+
+	public void keyReleased(KeyEvent e){
+		int key = e.getKeyCode();
+		switch(key){
+			case KeyEvent.VK_UP:
+				upPressed = false;
+				System.out.println("Key Released");
+				break;
+			case KeyEvent.VK_DOWN:
+				downPressed = false;
+				System.out.println("Key Released 2");
+				break;
+		}
+
 	}
 	
 	private Color getPaddleAndBallColor() {

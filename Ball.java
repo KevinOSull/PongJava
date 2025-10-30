@@ -21,7 +21,13 @@ public class Ball {
 		
 	}
 	
-	private void updateBallPosition() {
+	public void updateBallPosition(int windowHeight) {
+		xCoordinate += velocityX;
+		yCoordinate += velocityY;
+		
+		if(yCoordinate <= 0 || yCoordinate + radius >= windowHeight) {
+			velocityY = -velocityY;
+		}
 		
 	}
 	

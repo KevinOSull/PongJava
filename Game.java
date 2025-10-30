@@ -22,8 +22,12 @@ public class Game {
 	
 	
 	
-	private void updateGameLoop() {
-		
+	public void updateGameLoop(boolean upPressed,boolean downPressed) {
+		if(upPressed == true){
+			playerPaddle.movePaddleUp();
+		}else if(downPressed == true){
+			playerPaddle.movePaddleDown();
+		}
 	}
 	
 	private void checkCollisions() {
