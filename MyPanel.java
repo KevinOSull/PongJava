@@ -33,6 +33,9 @@ public class MyPanel extends JPanel implements Runnable, KeyListener{
 		myPaddle = p;
 		myAiPaddle = ai;
 		posX = WINDOW_WIDTH - myAiPaddle.getPaddleWidth();
+		this.addKeyListener(this);
+		this.setFocusable(true);
+
 	}
 
 	public void startGame() {
@@ -67,20 +70,14 @@ public class MyPanel extends JPanel implements Runnable, KeyListener{
 		g2D.fillRect(0,WINDOW_HEIGHT-8,WINDOW_WIDTH,8);
 	}
 
-	public void keyTyped(KeyEvent e) {
-		
-		
-	}
-	
-
 	public void keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
 		switch(key){
-			case KeyEvent.VK_UP:
+			case KeyEvent.VK_W:
 				upPressed = true;
 				System.out.println("Key Pressed up");
 				break;
-			case KeyEvent.VK_DOWN:
+			case KeyEvent.VK_S:
 				downPressed = true;
 				System.out.println("Key Pressed down");
 				break;
@@ -91,11 +88,11 @@ public class MyPanel extends JPanel implements Runnable, KeyListener{
 	public void keyReleased(KeyEvent e){
 		int key = e.getKeyCode();
 		switch(key){
-			case KeyEvent.VK_UP:
+			case KeyEvent.VK_W:
 				upPressed = false;
 				System.out.println("Key Released");
 				break;
-			case KeyEvent.VK_DOWN:
+			case KeyEvent.VK_S:
 				downPressed = false;
 				System.out.println("Key Released 2");
 				break;
@@ -106,5 +103,13 @@ public class MyPanel extends JPanel implements Runnable, KeyListener{
 	private Color getPaddleAndBallColor() {
 		return Color.WHITE;
 	}
+
+
+
+
+
+
+	// Unused but maybe required by KeyListener interface later
+	public void keyTyped(KeyEvent e) {}
 
 }
